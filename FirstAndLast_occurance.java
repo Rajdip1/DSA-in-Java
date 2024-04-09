@@ -49,6 +49,11 @@ class FirstAndLast_occurance {
         return ans;
     }
 
+    public static int totalOccur(int n1, int n2){
+        int total = (n2-n1)+1;
+        return total;
+    }
+
     public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
         int size = sc.nextInt();
@@ -60,7 +65,13 @@ class FirstAndLast_occurance {
 
         int key = sc.nextInt();
 
-        System.out.println("First Occurance at index: "+ firstOccurance(array, size, key));
-        System.out.println("Last Occurance at index: "+ lastOccurance(array, size, key));
+        int ans1 = firstOccurance(array, size, key);
+        System.out.println("First occurance at index: "+ans1);
+
+        int ans2 = lastOccurance(array, size, key);
+        System.out.println("Last occurance at index: "+ans2);
+
+        int t = totalOccur(ans1, ans2);
+        System.out.println("Total occurance is: "+t);
     }    
 }
