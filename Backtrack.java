@@ -16,7 +16,7 @@ public class Backtrack {
     }
 
     public static void main(String[] args){
-        String str = "ABC";
+        String str = "123";
         printPermutation(str, "", 0);
     }
 }
