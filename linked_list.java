@@ -3,6 +3,12 @@ import java.io.*;
 class linked_list {
     Node head;
 
+    private int size;
+
+    linked_list() {    //constructor
+        this.size = 0;
+    }
+
     class Node {
         String data;
         Node next;
@@ -10,6 +16,7 @@ class linked_list {
         Node(String data) {
             this.data = data;
             this.next = null;
+            size++;
         }
     }
 
@@ -55,7 +62,45 @@ class linked_list {
         }
         System.out.println("Null");
     }
+    
+    //delete at first
+    public void deleteFirst() {
+        if(head==null) {
+            System.out.println("The list is empty");
+            return;
+        }
+        size--;
+        head = head.next;
+    }
 
+    //delete at last
+    public void deleteLast() {
+        if(head==null) {
+            System.out.println("The list is empty");
+            return;
+        }
+
+        size--;
+
+        if(head.next == null) {
+            head = null;
+            return;
+        }
+
+        Node secondLast = head;
+        Node lastNode = head.next;  //head.nect = null -> lastNode = null
+
+        while(lastNode.next != null) { //null.next gives error
+            lastNode = lastNode.next;
+            secondLast = secondLast.next;
+        }
+
+        secondLast.next = null;
+    }
+
+    public int getSize() {
+        return size;
+    }
 
     public static void main(String args[]) {
         linked_list list = new linked_list();
@@ -70,5 +115,18 @@ class linked_list {
 
         list.addFirt("The");
         list.printList();
+
+        list.deleteFirst();
+        list.printList();
+
+        list.deleteLast();
+        list.printList();
+
+        System.out.println("Size is: " + list.getSize());
+
+        list.addFirt("The");
+        list.printList();
+        System.out.println("Size is: " + list.getSize());
+
     }
 }
