@@ -123,6 +123,19 @@ class linked_list {
         head = prevNode;
     }
 
+    //reverse linked-list through recursive manner
+    public Node reverseRecursive(Node head) {
+        if(head==null || head.next==null) {
+            return head;
+        }
+
+        Node newHead = reverseRecursive(head.next);
+        head.next.next = head;
+        head.next = null;
+
+        return newHead;
+    }
+
     public static void main(String args[]) {
         linked_list list = new linked_list();
 
@@ -134,7 +147,7 @@ class linked_list {
         list.addLast("Animal");
         list.printList();
 
-        list.addFirt("The");
+        // list.addFirt("The");
         list.printList();
 
         // list.deleteFirst();
@@ -149,7 +162,10 @@ class linked_list {
         // list.printList();
         // System.out.println("Size is: " + list.getSize());
 
-        list.reverseIterate();
+        // list.reverseIterate();
+        // list.printList();
+
+        list.head = list.reverseRecursive(list.head);
         list.printList();
 
     }
