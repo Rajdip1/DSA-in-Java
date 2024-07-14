@@ -102,6 +102,27 @@ class linked_list {
         return size;
     }
 
+    // reverse linked-list through iterative
+    public void reverseIterate() {
+        if(head==null || head.next==null) {
+            return;
+        }
+
+        Node prevNode = head;
+        Node currentNode = head.next;
+
+        while(currentNode != null) {
+            Node nextNode = currentNode.next;
+            currentNode.next = prevNode;
+
+            //update
+            prevNode = currentNode;
+            currentNode = nextNode;
+        }
+        head.next = null;
+        head = prevNode;
+    }
+
     public static void main(String args[]) {
         linked_list list = new linked_list();
 
@@ -116,17 +137,20 @@ class linked_list {
         list.addFirt("The");
         list.printList();
 
-        list.deleteFirst();
-        list.printList();
+        // list.deleteFirst();
+        // list.printList();
 
-        list.deleteLast();
-        list.printList();
+        // list.deleteLast();
+        // list.printList();
 
-        System.out.println("Size is: " + list.getSize());
+        // System.out.println("Size is: " + list.getSize());
 
-        list.addFirt("The");
+        // list.addFirt("The");
+        // list.printList();
+        // System.out.println("Size is: " + list.getSize());
+
+        list.reverseIterate();
         list.printList();
-        System.out.println("Size is: " + list.getSize());
 
     }
 }
